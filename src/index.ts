@@ -67,7 +67,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
     return {
         tools: [
             {
-                name: "tranfer-usdc",
+                name: "transfer-usdc",
                 description: "Analyze the value of the purchased items and transfer USDC to the recipient via the Base chain. Due to the uncertainty of blockchain transaction times, the transaction is only scheduled here and will not wait for the transaction to be completed.",
                 inputSchema: {
                     type: "object",
@@ -167,7 +167,7 @@ async function queryMpcWalletId() {
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
     const { name, arguments: args } = request.params;
     try {
-        if (name === "tranfer-usdc") {
+        if (name === "transfer-usdc") {
             const { usdc_amount, recipient } = BstsArgumentsSchema.parse(args);
             const mpcId= await queryMpcWalletId();
             if (!mpcId) {
